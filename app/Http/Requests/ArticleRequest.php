@@ -18,29 +18,29 @@ class ArticleRequest extends Request
 
         return $rules = [
             'year' => 'bail|required|numeric',
-            'no' => 'bail|required|numeric',
-            'tom' => 'bail|required|numeric',
+            'no' => 'bail|required|max:1',
+            'tom' => 'bail|required|max:1',
           
             'users' => 'required|array',
           
-            'date-arrival' => 'bail|date',
-            'date-review' => 'bail|date',
+            'date-arrival' => 'bail|date|nullable',
+            'date-review' => 'bail|date|nullable',
             'doi' => 'bail|max:100',
             'udk' => 'bail|max:100',
             'category' => 'required',
             'tags' => 'required|array',
             'status' => 'required',
 
-            'title' => 'bail|required|max:255',
+            'title-ru' => 'bail|required|max:255',
             'title-en' => 'bail|required|max:255',
 //             'text' => 'bail|max:65000',
-            'annotation' => 'bail|max:65000',
+            'annotation-ru' => 'bail|max:65000',
             'annotation-en' => 'bail|max:65000',
-            'keywords' => 'bail|max:50',
+            'keywords-ru' => 'bail|max:50',
             'keywords-en' => 'bail|max:50',
             'aplications' => 'bail|max:65000',
             'finance' => 'bail|max:50',
-            'literature' => 'bail|max:65000',
+            'literature-ru' => 'bail|max:65000',
             'literature-en' => 'bail|max:65000',
             
             

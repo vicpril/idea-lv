@@ -6,7 +6,7 @@
     
     {{-- CATEGORIES SELECT2 --}}
     @if ($input['input'] === 'categories')
-        <select required class="form-control select2" name="{{ $input['name'] }}" id="{{ $input['name'] }}">
+        <select required class="form-control select2" name="{{ $input['name'] }}[]" id="{{ $input['name'] }}">
             @foreach($input['options'] as $id => $title)
                 <option value="{{ $id }}" {{ old($input['name']) ? (in_array($id, old($input['name'])) ? 'selected' : '') : ($input['values']->contains('id', $id) ? 'selected' : '') }}>{{ $title }}</option>
             @endforeach
@@ -22,8 +22,17 @@
     {{-- AUTHORS SELECT2 --}}
     @elseif ($input['input'] === 'authors')
         <select required class="form-control select2" multiple name="{{ $input['name'] }}[]" id="{{ $input['name'] }}">
+            @if(old($input['name']))
+              @foreach( old($input['name']) as $id )
+                <option value="{{ $id }}" selected>{{ $input['options'][$id] }}</option>
+              @endforeach
+            @endif
+          
             @foreach($input['options'] as $id => $title)
-                <option value="{{ $id }}" {{ old($input['name']) ? (in_array($id, old($input['name'])) ? 'selected' : '') : ($input['values']->contains('id', $id) ? 'selected' : '') }}>{{ $title }}</option>
+                @if(old($input['name']) && in_array($id, old($input['name'])) )
+                  @continue
+                @endif
+                <option value="{{ $id }}">{{ $title }}</option>
             @endforeach
         </select>
   
@@ -47,7 +56,7 @@
     @elseif ($input['input'] === 'select')
         <select required class="form-control {{ isset($input['class']) ? $input['class'] : ''}}" name="{{ $input['name'] }}" id="{{ $input['name'] }}">
             @foreach($input['options'] as $id => $title)
-                <option value="{{ $id }}" {{ old($input['name']) ? (in_array($id, old($input['name'])) ? 'selected' : '') : ($input['values']->contains('id', $id) ? 'selected' : '') }}>{{ $title }}</option>
+                <option value="{{ $id }}" {{ old($input['name']) && $id == old($input['name']) ? 'selected' : '' }}>{{ $title }}</option>
             @endforeach
         </select>
     @elseif ($input['input'] === 'slider')

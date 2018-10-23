@@ -299,7 +299,7 @@
                     <!-- <label for="Status">Status</label> -->
                     @include('back.partials.input', [
                             'input' => [
-                                    'name' => 'Status',
+                                    'name' => 'status',
                                     'values' => isset($article) ? $article->status->id : collect(),
                                     'input' => 'select',
                                     'options' => [
@@ -357,7 +357,7 @@
                                     'name' => 'no',
                                     'values' => isset($article) ? $article->issue->no : collect(),
                                     'input' => 'select',
-                                    'options' => [1, 2, 3, 4],
+                                    'options' => [1=>1, 2=>2, 3=>3, 4=>4],
                                     'required' => true,
                                 ]
                             ])
@@ -373,7 +373,7 @@
                                     'name' => 'tom',
                                     'values' => isset($article) ? $article->issue->tom : collect(),
                                     'input' => 'select',
-                                    'options' => [1, 2],
+                                    'options' => [1=>1, 2=>2],
                                     'required' => true,
                                 ]
                             ])
@@ -403,7 +403,7 @@
                     @endslot
                     @include('back.partials.input', [
                         'input' => [
-                            'name' => 'category',
+                            'name' => 'category[]',
                             'values' => isset($article) ? $article->categories : collect(),
                             'input' => 'categories',
                             'options' => $categories,
