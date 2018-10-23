@@ -161,7 +161,7 @@
                     <label for="date-review">@lang('Date review'):</label>
                     @include('back.partials.input',[
                         'input' => [
-                                    'name' => 'date-arrival',
+                                    'name' => 'date-review',
                                     'value' => isset($article) ? $article->date_review : '',
                                     'input' => 'datepicker',
                                     'required' => false,

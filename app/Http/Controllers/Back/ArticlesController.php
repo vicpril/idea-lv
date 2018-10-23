@@ -3,6 +3,7 @@
 namespace Idea\Http\Controllers\Back;
 
 use Illuminate\Http\Request;
+use Idea\Http\Requests\ArticleRequest as ArticleRequest;
 use Idea\Http\Controllers\Controller;
 use Idea\Repositories\ArticlesRepository;
 use Idea\Repositories\CategoriesRepository;
@@ -61,7 +62,7 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         //
       dd($request);

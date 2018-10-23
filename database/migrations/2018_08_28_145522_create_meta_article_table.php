@@ -18,11 +18,14 @@ class CreateMetaArticleTable extends Migration
             $table->integer('article_id')->unsigned()->default(0);
             $table->string('lang');
             $table->string('title');
-            $table->text('text');
+            $table->text('text')->nullable();
             $table->text('annotation')->nullable();
             $table->string('keywords')->nullable();
+            $table->text('aplications')->nullable();
+            $table->text('finance')->nullable();
+            $table->text('literature')->nullable();
 
-            // $table->timestamps();
+//             $table->timestamps();
         });
         // create foreign keys
         Schema::table('meta_articles', function (Blueprint $table) {
